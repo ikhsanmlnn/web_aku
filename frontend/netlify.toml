@@ -1,0 +1,24 @@
+[build]
+  # Jika main.py di folder backend/, base harus ""
+  # Jika repo structure: root/frontend/, maka base = "frontend"
+  base = ""
+  command = "npm run build"
+  publish = "dist"
+
+# SPA Redirects (untuk React Router)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers untuk security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Environment variables (optional - bisa set di dashboard juga)
+[build.environment]
+  NODE_VERSION = "18"
